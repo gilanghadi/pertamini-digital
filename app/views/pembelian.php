@@ -31,7 +31,7 @@ use Carbon\Carbon;
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="jenis" class="mb-2">Jumlah Liter</label>
-                    <input type="number" class="form-control bg-transparent" name="jumlah_liter" id="liter">
+                    <input type="text" class="form-control bg-transparent" name="jumlah_liter" id="liter">
                 </div>
             </div>
             <div class="mt-3">
@@ -98,7 +98,7 @@ use Carbon\Carbon;
                     </div>
                     <?php if (isset($_SESSION['jumlah_liter'])) : ?>
                         <div class="card-body">
-                            <p class="card-text">Rp. <?= number_format($_SESSION['jumlah_liter']) ?></p>
+                            <p class="card-text"><?= $_SESSION['jumlah_liter'] ?> L</p>
                         </div>
                         <?php unset($_SESSION['jumlah_liter']) ?>
                     <?php else : ?>

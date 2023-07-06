@@ -43,10 +43,10 @@
                 id: data
             },
             dataType: 'json',
-            method: 'post',
+            method: 'get',
             success: function(data) {
                 $('#harga').val(parseInt(data.harga))
-            },
+            }
         })
     })
 </script>
@@ -69,49 +69,12 @@
                 }
             })
         } else {
-            let operation = parseInt($('#jumlah_uang').val()) + parseInt(harga)
-            const data = $('#bahan_bakar').val()
-            $.ajax({
-                url: '<?= BASEURL ?>/pembelian/findHarga/' + data,
-                data: {
-                    id: data
-                },
-                dataType: 'json',
-                method: 'get',
-                success: function(data) {
-                    const liter_operation = parseInt(data.liter) * parseInt(operation)
-                    const parseStr = liter_operation.toString()
-                    const filter = parseStr.replace(/0+/, '')
-                    const operation_pecahan = parseInt(filter)
-                    // console.log(operation_pecahan);
-                    setTimeout(function() {
-                        $('#liter').val(operation_pecahan)
-                    }, 2000);
-                }
-            })
+            let operation = parseInt($('#jumlah_uang').val()) / parseInt(harga)
+            $('#liter').val(operation)
         }
 
     })
 </script>
-
-
-<!-- function ajax findHarga -->
-<!-- <script type="text/javascript">
-    function findHarga(datas) {
-        const bahanBakar = $('#bahan_bakar').val()
-        $.ajax({
-            url: '<?= BASEURL ?>/pembelian/findHarga/' + bahanBakar,
-            data: {
-                id: bahanBakar
-            },
-            dataType: 'json',
-            method: 'get',
-            success: function(data) {
-                $('#harga').val(data.harga)
-            }
-        })
-    }
-</script> -->
 
 
 <!-- session flash message -->

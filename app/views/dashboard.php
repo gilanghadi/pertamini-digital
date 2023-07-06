@@ -48,7 +48,7 @@ use Carbon\Carbon;
                             <td><?= $order['bahan_bakar'] ?></td>
                             <td>Rp. <?= number_format($order['harga'])  ?></td>
                             <td>Rp. <?= number_format($order['jumlah_uang']) ?></td>
-                            <td><?= $order['jumlah_liter'] ?></td>
+                            <td><?= $order['jumlah_liter'] ?> L</td>
                             <td><?= Carbon::parse($order['created_at'])->format('d M Y h:i A') ?></td>
                             <td><a href="<?= BASEURL ?>/dashboard/destroy/<?= $order['id'] ?>" class="btn btn-danger" id="delete"><i class="bi bi-trash2-fill"></i></a></td>
                         </tr>
