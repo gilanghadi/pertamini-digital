@@ -1,0 +1,6 @@
+@media (min-width: 992px) {
+  .rounded-top-bottom {
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
