@@ -28,7 +28,7 @@ class User_model
 
     public function addUser($data)
     {
-        $query = "INSERT INTO user_model VALUES ('', :nama_lengkap, :username, :tanggal_lahir, :email, :password, :retype_password)";
+        $query = "INSERT INTO user_model VALUES ('', :nama_lengkap, :username, :tanggal_lahir, :email, :password, :retype_password, :image)";
         $this->db->query($query);
         $this->db->bind('nama_lengkap', $data["nama_lengkap"]);
         $this->db->bind('username', $data["username"]);
@@ -36,6 +36,7 @@ class User_model
         $this->db->bind('email', $data["email"]);
         $this->db->bind('password', password_hash($data["password"], PASSWORD_DEFAULT));
         $this->db->bind('retype_password', password_hash($data["retype_password"], PASSWORD_DEFAULT));
+        $this->db->bind('image', $data["image"]);
         $this->db->execute();
         return $this->db->rowCount();
     }
@@ -44,11 +45,14 @@ class User_model
     public function updateByUsername($username, $email, $data, $image)
     {
         $dataId = $this->findUsername($data);
-        $query = "UPDATE user_model SET username = :username, email = :email, image = :image, WHERE id =" . $dataId['id'];
+        $query = "UPDATE user_model SET username = :username, email = :email, image = :image WHERE id =" . $dataId['id'];
         $this->db->query($query);
         $this->db->bind('username', $username);
         $this->db->bind('email', $email);
-        $this->db->bind('image', $image);
+        if ($image) {
+            $this->db->bind('image', $image);
+            unlink(SITE_PUBLIC . '/' . $dataId['image']);
+        }
         $this->db->execute();
         session_start();
         $_SESSION['username'] = $username;

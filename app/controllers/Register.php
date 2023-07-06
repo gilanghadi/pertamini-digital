@@ -23,6 +23,11 @@ class Register extends Controller
             header('Location:' . BASEURL . '/register');
             die;
         }
+        if (strlen($_POST['password']) < 5) {
+            Flasher::setFlashInput('Password must have at least min 5 length');
+            header('Location:' . BASEURL . '/register');
+            die;
+        }
         if ($this->model('User_model')->addUser($_POST) > 0) {
             Flasher::setFlash('Success!', 'Register Successfuly', 'success');
             header('Location: ' . BASEURL . '/');
@@ -31,6 +36,13 @@ class Register extends Controller
             Flasher::setFlash('Error!', 'Something Went Wrong', 'error');
             header('Location: ' . BASEURL . '/register');
             exit;
+        }
+
+        function generalValidation($data)
+        {
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
         }
     }
 }

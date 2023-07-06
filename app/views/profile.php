@@ -4,7 +4,11 @@
             <div class="col-12 col-lg-8">
                 <div class="row d-flex align-items-center">
                     <div class="col-12 text-center text-lg-start col-lg-3">
-                        <img src="<?= BASEURL ?>/public/img/profile.png" alt="" class="rounded-circle">
+                        <?php if ($data['user_login']['image'] !== null) : ?>
+                            <img src="<?= BASEURL ?>/public/img/profile/<?= $data['user_login']['image'] ?>" alt="" class="rounded-circle overflow-hidden" height="150" width="150">
+                        <?php else : ?>
+                            <img src="<?= BASEURL ?>/public/img/profile.png" alt="" class="rounded-circle img-fluid">
+                        <?php endif; ?>
                     </div>
                     <div class="col-12 text-center text-lg-start col-lg-4 mt-3 mt-lg-0">
                         <h5 class="text-capitalize fw-bold"><?= $data['user_login']['nama_lengkap'] ?></h5>

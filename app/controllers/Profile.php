@@ -63,7 +63,7 @@ class Profile extends Controller
         }
 
         // check size image
-        if ($sizeImage > 800000000) {
+        if ($sizeImage > 50000) {
             Flasher::setFlash('Error!', "Image size is too big!", 'error');
             header('Location:' . BASEURL . '/profile');
             exit;
@@ -74,8 +74,7 @@ class Profile extends Controller
         $nameFileRandom = uniqid();
         $nameFileRandom .= '.';
         $nameFileRandom .= $result_image;
-        $path = BASEURL . '/public/img/profile/' . $nameFileRandom;
-        move_uploaded_file($tmpImage,  $path);
-        return $path;
+        move_uploaded_file($tmpImage, SITE_PUBLIC . '/' . $nameFileRandom);
+        return $nameFileRandom;
     }
 }
