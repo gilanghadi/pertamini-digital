@@ -13,7 +13,7 @@ class Order_model
     public function getAllById($data)
     {
         $dataId = $data['id'];
-        $query = "SELECT * FROM order_model INNER JOIN bahan_bakar ON order_model.bahan_bakar_id = bahan_bakar.id WHERE user_id = $dataId ORDER BY created_at ASC";
+        $query = "SELECT * FROM order_model INNER JOIN bahan_bakar ON order_model.bahan_bakar_id = bahan_bakar.id WHERE user_id = $dataId ORDER BY created_at DESC";
         $this->db->query($query);
         return $this->db->all();
     }
