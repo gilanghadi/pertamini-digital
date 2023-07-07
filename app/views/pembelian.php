@@ -3,7 +3,6 @@
 use Carbon\Carbon;
 
 ?>
-
 <section id="pembelian" class="mx-3 mx-md-0">
     <div class="container mt-5">
         <form action="<?= BASEURL ?>/pembelian/store" class="mb-4" method="post" id="form">
@@ -15,13 +14,13 @@ use Carbon\Carbon;
                     <select name="bahan_bakar" id="bahan_bakar" class="form-select">
                         <option selected disabled>Bahan Bakar</option>
                         <?php foreach ($data['bahan_bakar'] as $row) : ?>
-                            <option value="<?= $row['bahan_bakar'] ?>" id="option"><?= $row['bahan_bakar'] ?></option>
+                            <option value="<?= $row['id'] ?>" id="option"><?= $row['bahan_bakar'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="jenis" class="mb-2">Harga/Liter (Rp.)</label>
-                    <input type="number" class="form-control bg-transparent" name="harga" id="harga">
+                    <input type="number" class="form-control bg-transparent" name="harga" id="harga" readonly>
                 </div>
             </div>
             <div class="row">
@@ -31,7 +30,7 @@ use Carbon\Carbon;
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="jenis" class="mb-2">Jumlah Liter</label>
-                    <input type="text" class="form-control bg-transparent" name="jumlah_liter" id="liter">
+                    <input type="text" class="form-control bg-transparent" name="jumlah_liter" id="liter" readonly>
                 </div>
             </div>
             <div class="mt-3">
@@ -64,7 +63,7 @@ use Carbon\Carbon;
                     </div>
                     <?php if (isset($_SESSION['bahan_bakar'])) : ?>
                         <div class="card-body">
-                            <p class="card-text"><?= $_SESSION['bahan_bakar'] ?></p>
+                            <p class="card-text"><?= $_SESSION['bahan_bakar']['bahan_bakar'] ?></p>
                         </div>
                         <?php unset($_SESSION['bahan_bakar']) ?>
                     <?php else : ?>

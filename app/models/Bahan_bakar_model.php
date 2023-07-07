@@ -16,10 +16,10 @@ class Bahan_bakar_model
         return $this->db->all();
     }
 
-    public function findBahanBakar($bahan_bakar)
+    public function findBahanBakar($id)
     {
-        $this->db->query("SELECT * FROM bahan_bakar WHERE bahan_bakar = :bahan_bakar");
-        $this->db->bind('bahan_bakar', $bahan_bakar);
+        $this->db->query("SELECT * FROM bahan_bakar WHERE id = :id");
+        $this->db->bind('id', $id);
         return $this->db->first();
     }
 

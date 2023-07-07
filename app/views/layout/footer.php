@@ -69,10 +69,13 @@
                 }
             })
         } else {
-            let operation = parseInt($('#jumlah_uang').val()) / parseInt(harga)
-            $('#liter').val(operation)
+            if (typeof $('#jumlah_uang').val() !== 'number') {
+                $('#liter').val(0)
+            } else {
+                let operation = parseInt($('#jumlah_uang').val()) / parseInt(harga)
+                $('#liter').val(operation)
+            }
         }
-
     })
 </script>
 

@@ -25,7 +25,7 @@ class Pembelian extends Controller
             if ($this->model('bahan_bakar_model')->addOrder($_POST) > 0) {
                 session_start();
                 $_SESSION['created_at'] = $_POST['created_at'];
-                $_SESSION['bahan_bakar'] = $_POST['bahan_bakar'];
+                $_SESSION['bahan_bakar'] = $this->model('order_model')->sessionBahanBakar(intval($_POST['bahan_bakar']));
                 $_SESSION['jumlah_uang'] = $_POST['jumlah_uang'];
                 $_SESSION['jumlah_liter'] = $_POST['jumlah_liter'];
                 Flasher::setFlash('Success!', 'Order Successfuly', 'success');
@@ -41,8 +41,8 @@ class Pembelian extends Controller
         }
     }
 
-    public function findHarga($bahan_bakar)
+    public function findHarga($id)
     {
-        echo json_encode($this->model('bahan_bakar_model')->findBahanBakar($bahan_bakar));
+        echo json_encode($this->model('bahan_bakar_model')->findBahanBakar($id));
     }
 }
