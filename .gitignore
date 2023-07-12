@@ -1,4 +1,4 @@
-Config.php
-vendor/
-*.json
+./app/config/Config.php
+./vendor/
 *.lock
+*.json
