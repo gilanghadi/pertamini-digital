@@ -54,7 +54,7 @@
 <!-- operation jumlah_uang -->
 <script type="text/javascript">
     $('#jumlah_uang').on('keyup', function() {
-        const harga = $('#harga').val();
+        let harga = $('#harga').val();
         if ($('#jumlah_uang').val() === harga) {
             const data = $('#bahan_bakar').val()
             $.ajax({
@@ -65,16 +65,15 @@
                 dataType: 'json',
                 method: 'get',
                 success: function(data) {
-                    $('#liter').val(parseFloat(data.liter))
+                    $('#liter').val(data.liter)
                 }
             })
+        } else if (parseInt($('#jumlah_uang').val()) > parseInt(harga)) {
+            let operation = parseInt($('#jumlah_uang').val()) / parseInt(harga)
+            const parseString = operation.toString()
+            $('#liter').val(parseString.substring(0, 4))
         } else {
-            if (typeof $('#jumlah_uang').val() !== 'number') {
-                $('#liter').val(0)
-            } else {
-                let operation = parseInt($('#jumlah_uang').val()) / parseInt(harga)
-                $('#liter').val(operation)
-            }
+            $('#liter').val(0)
         }
     })
 </script>

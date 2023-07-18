@@ -11,7 +11,7 @@ use Carbon\Carbon;
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <label for="bahan_bakar" class="mb-2">Jenis Bahan Bakar</label>
-                    <select name="bahan_bakar" id="bahan_bakar" class="form-select">
+                    <select name="bahan_bakar" id="bahan_bakar" class="form-select" required>
                         <option selected disabled>Bahan Bakar</option>
                         <?php foreach ($data['bahan_bakar'] as $row) : ?>
                             <option value="<?= $row['id'] ?>" id="option"><?= $row['bahan_bakar'] ?></option>
@@ -20,17 +20,17 @@ use Carbon\Carbon;
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="jenis" class="mb-2">Harga/Liter (Rp.)</label>
-                    <input type="number" class="form-control bg-transparent" name="harga" id="harga" readonly>
+                    <input type="number" class="form-control bg-transparent" name="harga" id="harga" readonly required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <label for="jenis" class="mb-2">Jumlah Uang (Rp.)</label>
-                    <input type="number" class="form-control" name="jumlah_uang" id="jumlah_uang">
+                    <input type="number" class="form-control" name="jumlah_uang" id="jumlah_uang" required>
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="jenis" class="mb-2">Jumlah Liter</label>
-                    <input type="text" class="form-control bg-transparent" name="jumlah_liter" id="liter" readonly>
+                    <input type="text" class="form-control bg-transparent" name="jumlah_liter" id="liter" readonly required>
                 </div>
             </div>
             <div class="mt-3">

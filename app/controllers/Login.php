@@ -40,7 +40,7 @@ class Login extends Controller
                         exit;
                     }
                 } else {
-                    Flasher::setFlashInput('Your Password Wrong!');
+                    Flasher::setFlash('Error!', 'Your Username Or Password Wrong!', 'error');
                     header('Location:' . BASEURL . '/');
                     exit;
                 }

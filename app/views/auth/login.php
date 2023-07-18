@@ -13,12 +13,9 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <div class="position-relative">
-                                <input type="password" class="form-control <?= isset($_SESSION['flashInput']['message']) ? 'border-danger' : '' ?>" id="password" name="password" required>
+                                <input type="password" class="form-control" id="password" name="password" required>
                                 <i class="bi bi-eye-slash position-absolute top-0 end-0 py-2 me-3" id="iconPass" style="cursor: pointer;"></i>
                             </div>
-                            <?php
-                            Flasher::flashInput();
-                            ?>
                         </div>
                         <p>you dont have already account? <a href="<?= BASEURL ?>/register">register</a></p>
                         <span>
