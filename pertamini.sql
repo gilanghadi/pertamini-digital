@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jul 2023 pada 10.13
+-- Waktu pembuatan: 21 Jul 2023 pada 09.38
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -54,7 +54,7 @@ INSERT INTO `bahan_bakar` (`id`, `bahan_bakar`, `harga`, `liter`) VALUES
 --
 
 CREATE TABLE `order_model` (
-  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `bahan_bakar_id` int(11) NOT NULL,
   `harga` int(255) NOT NULL,
@@ -81,6 +81,14 @@ CREATE TABLE `user_model` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data untuk tabel `user_model`
+--
+
+INSERT INTO `user_model` (`id`, `nama_lengkap`, `username`, `tanggal_lahir`, `email`, `password`, `retype_password`, `image`) VALUES
+(19, 'arip prasetyo', 'mang arip', '2023-07-21', 'aripgans@gmail.com', '$2y$10$J1tK4MDc39yLL1o6jAWrhOJevuVKygRKRRKleyQnb6MdR8p8ifjQK', '$2y$10$G6cC2tlzbu9nlWDy5gU0.O307DSFm2NTWlnIARyY1lZvolTBjxXZa', NULL),
+(20, 'jajang marujang', 'jajang', '2023-07-21', 'jajang@mail.com', '$2y$10$1pQiuZjvYL3CKFB1MuFDa.wq4NYXauawQBY4dp.vzJol1mr3gnkG2', '$2y$10$M3dT422OirW5BBpGEYw0ke/Hg4KaWTX2O/5GImg0IyToKUmxYibTO', NULL);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -94,7 +102,7 @@ ALTER TABLE `bahan_bakar`
 -- Indeks untuk tabel `order_model`
 --
 ALTER TABLE `order_model`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`order_id`),
   ADD KEY `bahan_bakar_id` (`bahan_bakar_id`);
 
 --
@@ -117,13 +125,13 @@ ALTER TABLE `bahan_bakar`
 -- AUTO_INCREMENT untuk tabel `order_model`
 --
 ALTER TABLE `order_model`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_model`
 --
 ALTER TABLE `user_model`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
