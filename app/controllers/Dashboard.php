@@ -9,7 +9,7 @@ class Dashboard extends Controller
         if (isset($_SESSION['login']) === true) {
             $data['title'] = 'Dashboard | Pertamini';
             $data['user_login'] = $this->model('user_model')->findUsername($_SESSION['username']);
-            $data['order'] = $this->model('order_model')->getAllById($data['user_login']);
+            $data['order_user_id'] = $this->model('order_model')->getAllById($data['user_login']);
             $this->view('layout/header',  $data);
             $this->view('components/navbar');
             $this->view('dashboard', $data);
@@ -19,10 +19,10 @@ class Dashboard extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy($order_id)
     {
         if (isset($_SESSION['login']) === true) {
-            if ($this->model('order_model')->deleteById($id) > 0) {
+            if ($this->model('order_model')->deleteById($order_id) > 0) {
                 header('Location:' . BASEURL . '/dashboard');
                 exit;
             } else {

@@ -42,7 +42,7 @@ use Carbon\Carbon;
                 </thead>
                 <tbody>
                     <?php $number = 1 ?>
-                    <?php foreach ($data['order'] as $order) : ?>
+                    <?php foreach ($data['order_user_id'] as $order) : ?>
                         <tr>
                             <td><?= $number ?></td>
                             <td><?= $order['bahan_bakar'] ?></td>
@@ -50,10 +50,10 @@ use Carbon\Carbon;
                             <td>Rp. <?= number_format($order['jumlah_uang']) ?></td>
                             <td><?= $order['jumlah_liter'] ?> L</td>
                             <td><?= Carbon::parse($order['created_at'])->format('d M Y h:i A') ?></td>
-                            <td><a href="<?= BASEURL ?>/dashboard/destroy/<?= $order['id'] ?>" class="btn btn-danger" id="delete"><i class="bi bi-trash2-fill"></i></a></td>
+                            <td><a href="<?= BASEURL ?>/dashboard/destroy/<?= $order['order_id'] ?>" class="btn btn-danger" id="delete"><i class="bi bi-trash2-fill"></i></a></td>
                         </tr>
                         <?php $number++ ?>
-                    <?php endforeach;  ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
